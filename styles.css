@@ -1,0 +1,238 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "DIN Next";
+  src: url(DINNext.woff2) format("woff2"), url("DINNext.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Druk Text";
+  src: url("DrukText.woff2") format("woff2"),
+    url("DrukText.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Trade Gothic Next";
+  src: url("TradeGothicNext.woff2") format("woff2"),
+    url("TradeGothicNext.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: "DIN Next", sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Druk Text", serif;
+}
+
+p {
+  font-family: "Trade Gothic Next", sans-serif;
+}
+
+nav {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 1rem 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  position: relative;
+}
+
+.logo img {
+  width: 100px;
+  height: auto;
+}
+
+.logo-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1rem;
+  font-weight: bold;
+  color: #a9a9a9;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.logo-text span {
+  color: red;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: #ff4d4d;
+  bottom: -5px;
+  left: 0;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.cta-btn {
+  background: #ff4d4d;
+  color: white !important;
+  padding: 0.5rem 1.5rem;
+  border-radius: 25px;
+  transition: transform 0.3s ease;
+}
+
+.cta-btn:hover {
+  transform: translateY(-2px);
+}
+
+.menu-btn {
+  display: none;
+  background: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 1001;
+  position: relative;
+}
+
+.hamburger {
+  width: 30px;
+  height: 3px;
+  background: #2a2a2a;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 3px;
+  background: #2a2a2a;
+  transition: all 0.3s ease;
+}
+
+.hamburger::before {
+  top: -8px;
+}
+
+.hamburger::after {
+  bottom: -8px;
+}
+
+.menu-btn.active .hamburger {
+  background: transparent;
+}
+
+.menu-btn.active .hamburger::before {
+  transform: rotate(45deg);
+  top: 0;
+}
+
+.menu-btn.active .hamburger::after {
+  transform: rotate(-45deg);
+  bottom: 0;
+}
+
+.close-btn {
+  display: none;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #333;
+}
+
+/* hero section */
+.hero {
+  background-image: url("hero-img.gif");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+.hero-text h1 {
+  font-size: 3rem;
+  color: red;
+}
+
+.hero-text p {
+  font-size: 1.2rem;
+  color: red;
+}
+
+.hero-text {
+  position: absolute;
+  top: 70%;
+  left: 5%;
+  width: 500px;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: 250px;
+    background: rgba(255, 255, 255, 0.98);
+    flex-direction: column;
+    padding: 6rem 2rem;
+    transition: right 0.3s ease-in-out;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+
+  .cta-btn {
+    margin-top: 1rem;
+  }
+
+  .close-btn {
+    display: block;
+  }
+}
